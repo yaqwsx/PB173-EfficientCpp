@@ -266,10 +266,9 @@ struct MatrixBenchmark : brick::benchmark::Group {
         std::mt19937 rand{ 42 };
         std::uniform_real_distribution<> dist( 1.0, 2.0 );
 
-        const int size = 1024;
         auto gen = [&]{ return dist( rand ); };
-        _a = Matrix< float >( size, size, gen );
-        _b = Matrix< float >( size, size, gen );
+        _a = Matrix< float >( p, p, gen );
+        _b = Matrix< float >( p, p, gen );
     }
 
     BENCHMARK(multiply) {
