@@ -1,9 +1,11 @@
 #include <cstdint>
-#include <array>
 
 struct JM
 {
-    JM() : _data( { 0, 0, 0, 0 } ){}
+    JM() {
+        for ( int i = 0; i != 4; i++ )
+            _data[ i ] = 0;
+    }
 
     void insert( char c ) {
         int bank = c >> 6;
@@ -25,17 +27,21 @@ struct JM
 
     JM operator&( const JM &o ) {
         auto r = *this;
-        for ( int i = 0; i != 4; i++ )
-            r._data[ i ] &= o._data[ i ];
+        r._data[ 0 ] &= o._data[ 0 ];
+        r._data[ 1 ] &= o._data[ 1 ];
+        r._data[ 2 ] &= o._data[ 2 ];
+        r._data[ 3 ] &= o._data[ 3 ];
         return r;
     }
 
     JM operator|( const JM &o ) {
         auto r = *this;
-        for ( int i = 0; i != 4; i++ )
-            r._data[ i ] |= o._data[ i ];
+        r._data[ 0 ] |= o._data[ 0 ];
+        r._data[ 1 ] |= o._data[ 1 ];
+        r._data[ 2 ] |= o._data[ 2 ];
+        r._data[ 3 ] |= o._data[ 3 ];
         return r;
     }
 
-    std::array< uint64_t, 4 > _data;
+    uint64_t _data[ 4 ];
 };
