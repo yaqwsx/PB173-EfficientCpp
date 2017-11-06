@@ -1,4 +1,6 @@
 #include <cstdint>
+#include <immintrin.h>
+
 
 struct JM
 {
@@ -27,19 +29,17 @@ struct JM
 
     JM operator&( const JM &o ) {
         auto r = *this;
-        r._data[ 0 ] &= o._data[ 0 ];
-        r._data[ 1 ] &= o._data[ 1 ];
-        r._data[ 2 ] &= o._data[ 2 ];
-        r._data[ 3 ] &= o._data[ 3 ];
+        *reinterpret_cast< __m256d* >( &r._data )
+            = _mm256_and_pd( *reinterpret_cast< __m256d* >( &r._data ),
+                             *reinterpret_cast< const __m256d* >( &o._data ) );
         return r;
     }
 
     JM operator|( const JM &o ) {
         auto r = *this;
-        r._data[ 0 ] |= o._data[ 0 ];
-        r._data[ 1 ] |= o._data[ 1 ];
-        r._data[ 2 ] |= o._data[ 2 ];
-        r._data[ 3 ] |= o._data[ 3 ];
+        *reinterpret_cast< __m256d* >( &r._data )
+            = _mm256_or_pd( *reinterpret_cast< __m256d* >( &r._data ),
+                         *reinterpret_cast< const __m256d* >( &o._data ) );
         return r;
     }
 
