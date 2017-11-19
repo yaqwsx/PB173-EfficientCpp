@@ -17,4 +17,6 @@ ex2: ex2.cpp
 ex3: ex3.cpp
 	c++ -O2 -std=c++1z -g -Ibricks ex3.cpp -o $@
 hw3: hw3.cpp
-	c++ -O2 -g -std=c++1z hw3.cpp -o $@
+	c++ -O2 -g -std=c++1z -Ibricks hw3.cpp -o $@
+hw4: hw4.cpp
+	c++ -O2 -g -std=c++1z -Ibricks hw4.cpp -o $@
