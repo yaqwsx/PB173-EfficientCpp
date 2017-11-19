@@ -20,3 +20,5 @@ hw3: hw3.cpp
 	c++ -O2 -g -std=c++1z -Ibricks hw3.cpp -o $@
 hw4: hw4.cpp
 	c++ -O2 -g -std=c++1z -Ibricks hw4.cpp -o $@
+bf: bf.cpp
+	c++ -O2 -g -std=c++1z bf.cpp -o $@
