@@ -1,13 +1,19 @@
 #include <iostream>
 #include <cstdint>
 #include <cstdlib>
+#include <algorithm>
+#include <limits>
+#include <cmath>
+#include <bitset>
+#include <vector>
 
 uint64_t naive_prime( int n ) {
     for ( uint64_t i = 2; true; i++) {
         if ( i != 2 && i % 2 == 0 )
             continue;
+        uint64_t limit = sqrt( 2 * i );
         bool valid = true;
-        for ( uint64_t j = 2; valid && j != i; j++ ) {
+        for ( uint64_t j = 2; valid && j != limit; j++ ) {
             if ( i % j == 0 )
                 valid = false;
         }
@@ -17,6 +23,7 @@ uint64_t naive_prime( int n ) {
     }
     return -1;
 }
+
 
 int main( int argc, char **argv ) {
     if ( argc != 2 ) {
