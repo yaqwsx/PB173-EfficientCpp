@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <cstdio>
 
 int main() {
     double xsum = 0;
@@ -10,7 +11,7 @@ int main() {
 
     double x, y;
     int count = 0;
-    while ( std::cin >> x >> y ) {
+    while ( std::scanf("%lf %lf", &x, &y) == 2 ) {
         xsum += x;
         xsum2 += x * x;
         ysum += y;
